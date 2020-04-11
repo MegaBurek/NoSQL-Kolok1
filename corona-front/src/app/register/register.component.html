@@ -1,0 +1,23 @@
+<div class="card card-signin mr-auto ml-auto">
+    <div class="card-body">
+        <h5 class="card-title text-center">Register</h5>
+        <form class="form-signin" [formGroup]="registerForm" (ngSubmit)="onFormSubmit()">
+            <div class="form-label-group mb-1">
+                <input class="form-control form-control-lg" name="name" type="text" placeholder="Name" formControlName="name">
+            </div>
+
+            <div class="form-label-group mb-1">
+                <input class="form-control form-control-lg" name="surname" type="text" placeholder="Surname" required formControlName="surname">
+            </div>
+            
+            <div class="form-label-group mb-1">
+                <input class="form-control form-control-lg" name="username" type="text" placeholder="Username" required formControlName="username">
+            </div>
+
+            <div class="form-label-group mb-5">
+                <input class="form-control form-control-lg" name="password" type="password" placeholder="Password" required formControlName="password">
+            </div>
+            <button class="sign-in-btn" type="submit" [disabled]="!registerForm.valid">Sign in</button>
+        </form>
+    </div>
+</div>

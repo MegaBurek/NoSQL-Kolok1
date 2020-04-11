@@ -1,0 +1,10 @@
+<h3 class="masthead-brand">
+    Corona Virus Tracker
+</h3>
+<nav class="nav nav-masthead justify-content-center">
+    <a href="/login" class="nav-link" *ngIf="!isLoggedIn">Sign In</a>
+    <a href="/register" class="nav-link" *ngIf="!isLoggedIn">Register</a>
+    <a href="/home" class="nav-link" *ngIf="isLoggedIn">Global Data</a>
+    <a href="/my-data" class="nav-link" *ngIf="isLoggedIn">My Data</a>
+    <a href="/dashboard" class="nav-link" *ngIf="adminLoggedIn">Dashboard</a>
+</nav>

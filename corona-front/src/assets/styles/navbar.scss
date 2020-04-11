@@ -1,0 +1,19 @@
+.masthead-brand{
+    float: none;
+    font-family: 'Vollkorn', serif;
+    color: $nav-text-color;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.nav-link{
+    width: 150px;
+}
+
+.nav-masthead .nav-link{
+    color: #c4c4c4;
+    font-family: 'Montserrat', sans-serif;
+    &:hover{
+        color: $nav-text-color;
+    }
+}
