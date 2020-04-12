@@ -1,9 +1,16 @@
 .table{
-    width: 500px;
+    width: 800px;
     background-color: $primary;
     border-radius: 10px;
 }
 
+.table-responsive{
+    max-height: 400px;
+}
+
+td{
+    width: 0;
+}
 .table-title{
     font-family: 'Vollkorn', serif;
     color: $nav-text-color;
