@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { LoginService } from '../services/login/login.service';
 
 @Component({
@@ -7,35 +8,52 @@ import { LoginService } from '../services/login/login.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
-
+  
   isLoggedIn = false;
   adminLoggedIn = false;
   private loggedUserRoles: String[];
-  private loggedUserRole: String;
+  public loggedUserType: String;
+  private loggedInSubcription: Subscription;
+  roles = [];
+  private roleSubcription: Subscription;
+
 
   constructor(
     private loginService: LoginService
   ) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.standardLogin();
-  }
+   }
+   
+   standardLogin() {
+    this.loggedInSubcription = this.loginService.loggedInStatusChanged.subscribe(
+      (status: boolean) => {
+        this.isLoggedIn = status;
+      }
+    );
 
-  standardLogin() {
-    this.isLoggedIn = this.loginService.isLoggedIn();
     this.loggedUserRoles = this.loginService.getCurrentRoles();
     this.loggedUserRoles.forEach(role => {
       if (role === 'ROLE_ADMINISTRATOR') {
-        this.loggedUserRole = 'administrator';
+        this.loggedUserType = 'administrator';
         this.adminLoggedIn = true;
       }
       if (role === 'ROLE_USER') {
-        this.loggedUserRole = 'user';
+        this.loggedUserType = 'user';
       }
     });
 
+  }
+
+  onLogout() {
+    this.loginService.logout();
+  }
+
+  ngOnDestroy() {
+    this.loggedInSubcription.unsubscribe();
+    this.roleSubcription.unsubscribe();
   }
 
 

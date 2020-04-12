@@ -30,9 +30,6 @@ public class LoginService {
 	@Autowired
 	private TokenProvider tokenProvider;
 	
-	@Autowired
-	private PermissionRepository permissionRepository;
-	
 	
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginAttempt loginAttempt) {
 		 Authentication authentication = authenticationManager.authenticate(
